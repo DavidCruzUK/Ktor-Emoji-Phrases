@@ -12,6 +12,7 @@ import io.ktor.features.DefaultHeaders
 import io.ktor.freemarker.*
 import io.ktor.gson.*
 import io.ktor.http.*
+import io.ktor.http.content.*
 import io.ktor.response.*
 import io.ktor.routing.*
 
@@ -55,6 +56,11 @@ fun Application.module(testing: Boolean = false) {
     val db = InMemoryRepository()
 
     routing {
+        // Add static files
+        static("/static") {
+            // Add images folder
+            resource("images")
+        }
         home()
         about()
         phrases(db)
