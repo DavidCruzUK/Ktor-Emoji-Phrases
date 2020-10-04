@@ -56,7 +56,9 @@ fun Application.module(testing: Boolean = false) {
 
     install(Locations)
 
-    val db = InMemoryRepository()
+    DBFactory
+
+    val db = EmojiPhrasesRepository()
 
     routing {
         // Add static files
