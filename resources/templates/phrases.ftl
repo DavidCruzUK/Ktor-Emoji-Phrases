@@ -18,7 +18,7 @@
                             <form method="post" action="/phrases">
                                 <input type="hidden" name="id" value="${phrase.id}">
                                 <input type="hidden" name="action" value="delete">
-                                <input type="image" src="/images/delete.png" width="24" height="24" border="0" alt="delete">
+                                <input type="image" src="/static/delete.png" width="24" height="24" border="0" alt="delete">
                             </form>
                         </td>
                     </tr>
