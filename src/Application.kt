@@ -1,10 +1,12 @@
 package com.lastreact
 
 import com.lastreact.api.*
+import com.lastreact.model.*
 import com.lastreact.repository.*
 import com.lastreact.webapp.*
 import freemarker.cache.*
 import io.ktor.application.*
+import io.ktor.auth.*
 import io.ktor.features.*
 import io.ktor.features.DefaultHeaders
 import io.ktor.freemarker.*
@@ -39,6 +41,15 @@ fun Application.module(testing: Boolean = false) {
 
     install(FreeMarker) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
+    }
+
+    install(Authentication) {
+        basic(name = "auth") {
+            realm = "Ktor server"
+            validate {credentials ->
+                if (credentials.password == "${credentials.name}123") User(credentials.name) else null
+            }
+        }
     }
 
     val db = InMemoryRepository()
