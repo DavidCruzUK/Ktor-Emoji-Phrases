@@ -1,5 +1,4 @@
-<#-- @ftlvariable name="error" type="java.lang.String" -->
-<#import "../../../../../Downloads/SSKK-2-004-beautify-with-bootstrap-part1/start/resources/templates/common/bootstrap.ftl" as b>
+<#import "common/bootstrap.ftl" as b>
 
 <@b.page>
   <div class="row">

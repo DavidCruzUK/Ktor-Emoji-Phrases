@@ -38,5 +38,6 @@ dependencies {
     implementation "com.h2database:h2:$h2_version"
     implementation "com.zaxxer:HikariCP:$hikaricp_version"
     implementation "ch.qos.logback:logback-classic:$logback_version"
+    implementation "org.postgresql:postgresql:$postgres_version"
     testImplementation "io.ktor:ktor-server-tests:$ktor_version"
 }

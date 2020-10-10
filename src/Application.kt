@@ -45,16 +45,9 @@ fun Application.module(testing: Boolean = false) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }
 
-    install(Authentication) {
-        basic(name = "auth") {
-            realm = "Ktor server"
-            validate {credentials ->
-                if (credentials.password == "${credentials.name}123") User(credentials.name) else null
-            }
-        }
-    }
-
     install(Locations)
+
+    val hashFunction = { s: String -> hash(s) }
 
     DBFactory
 
@@ -69,6 +62,9 @@ fun Application.module(testing: Boolean = false) {
         home()
         about()
         phrases(db)
+        signIn(db, hashFunction)
+        signOut()
+        signUp(db, hashFunction)
 
         // API
         phrase(db)
@@ -77,6 +73,7 @@ fun Application.module(testing: Boolean = false) {
 
 const val API_VERSION = "/api/v1"
 
+@KtorExperimentalLocationsAPI
 suspend fun ApplicationCall.redirect(location: Any) {
     respondRedirect(application.locations.href(location))
 }
