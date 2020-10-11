@@ -81,10 +81,9 @@ fun Route.signUp(db: EmojiPhrasesRepository, hashFunction: (String) -> String) {
                             call.redirect(signUpError)
                         }
                     }
-
-                    call.sessions.set(EPSession(newUser.userId))
-                    call.redirect(Phrases())
                 }
+                call.sessions.set(EPSession(newUser.userId))
+                call.redirect(Phrases())
             }
         }
 
