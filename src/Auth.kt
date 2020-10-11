@@ -4,9 +4,13 @@ import io.ktor.util.*
 import javax.crypto.*
 import javax.crypto.spec.*
 
+const val MIN_USER_ID_LENGTH = 4
+const val MIN_PASSWORD_LENGTH = 6
+
 @KtorExperimentalAPI
 val hasKey = hex(System.getenv("SECRET_KEY"))
 
+@KtorExperimentalAPI
 val hmacKey = SecretKeySpec(hasKey, "HmaSHA1")
 
 @KtorExperimentalAPI
