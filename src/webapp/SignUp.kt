@@ -95,7 +95,7 @@ fun Route.signUp(db: EmojiPhrasesRepository, hashFunction: (String) -> String) {
             call.redirect(Phrases())
         } else {
             call.redirect(
-                FreeMarkerContent("signin.ftl", mapOf("error" to it.error))
+                FreeMarkerContent("signup.ftl", mapOf("error" to it.error))
             )
         }
     }
