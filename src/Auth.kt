@@ -19,6 +19,6 @@ fun hash(password: String): String {
     hmac.init(hmacKey)
     return hex(hmac.doFinal(password.toByteArray(Charsets.UTF_8)))
 }
-private val userIdPattern = "[a-zA-Z0-9\\.]".toRegex()
+private val userIdPattern = "([A-Za-z0-9\\-_]+)".toRegex()
 
 internal fun userNameValid(userId: String) = userId.matches(userIdPattern)

@@ -8,6 +8,7 @@ import io.ktor.freemarker.*
 import io.ktor.http.*
 import io.ktor.locations.*
 import io.ktor.request.*
+import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.sessions.*
 
@@ -94,9 +95,7 @@ fun Route.signUp(db: EmojiPhrasesRepository, hashFunction: (String) -> String) {
         if (user != null) {
             call.redirect(Phrases())
         } else {
-            call.redirect(
-                FreeMarkerContent("signup.ftl", mapOf("error" to it.error))
-            )
+            call.respond(FreeMarkerContent("signup.ftl", mapOf("error" to it.error)))
         }
     }
 }

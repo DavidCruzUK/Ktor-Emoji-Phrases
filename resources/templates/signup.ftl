@@ -9,7 +9,9 @@
         </div>
         <div class="panel-body">
             <form action="/signup" method="POST">
-
+              <#if error??>
+                <p>${error}</p>
+              </#if>
 
               <div class="form-group">
                 <label for="userId">Username</label>
